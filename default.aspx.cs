@@ -126,14 +126,30 @@ public partial class _default : System.Web.UI.Page
             txtcount.Text = dt.Rows[0][3].ToString();
             txtdecription.Text = dt.Rows[0][4].ToString();
             hfproductID.Value = dt.Rows[0][0].ToString();
-            btndelete.Enabled = true;
+           // btndelete.Enabled = true;
+        }
+    }
+    protected void lnkdlt(object sender, EventArgs e)
+    {
+        int productid = Convert.ToInt32((sender as LinkButton).CommandArgument);
+        using (SqlConnection con = new SqlConnection(cs))
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand("deleteById", con);
+            cmd.Parameters.AddWithValue("@productid", productid);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.ExecuteNonQuery();
+            gridFill();
+            clear();
+            succes.Text = "DELETED SUCCESFULLY!";
+           
         }
     }
     public void clear()
     {
         hfproductID.Value = "";
         txtproduct.Text = txtprice.Text = txtcount.Text = txtdecription.Text = "";
-        btndelete.Enabled = false;
+       // btndelete.Enabled = false;
         succes.Text = error.Text = "";
     }
      void gridFill()

@@ -49,9 +49,9 @@
             </tr>
             <tr>
                 <td></td>
-                <td colspan="4">
+                <td colspan="3">
                     <asp:Button ID="btninsert" runat="server" Text="INSERT" OnClick="btninsert_Click" />
-                    <asp:Button ID="btndelete" runat="server" Text="DELETE" OnClick="btndelete_Click" />
+                   
                     <asp:Button ID="btnclear" runat="server" Text="CLEAR" OnClick="btnclear_Click" />
                     <asp:Button ID="btnupdate" runat="server" Text="UPDATE" OnClick="btnupdate_Click" />
                 </td>
@@ -72,6 +72,11 @@
                 <asp:TemplateField>
                     <ItemTemplate>
                         <asp:LinkButton Text="edit" ID="lnkedit" CommandArgument='<%# Eval("productid") %>' runat="server" OnClick="lnk_edit"></asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField>
+                    <ItemTemplate>
+                      <asp:LinkButton Text="delete" ID="lnkdlt" CommandArgument='<%# Eval("productid") %>' runat="server" OnClick="lnkdlt"></asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
 
